@@ -120,3 +120,7 @@ def get_menu_path(week: int = 0) -> str:
         settings.menus_dir,
         get_week_end(week) + ".pdf",
     )
+
+
+def get_menu_name() -> str:
+    return f"Menù mensa {get_week_start()}-{get_week_end()}.pdf"

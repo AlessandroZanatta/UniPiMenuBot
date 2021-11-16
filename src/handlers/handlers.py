@@ -43,7 +43,7 @@ Qua puoi trovare i menu settimanali di tutte le mense universitarie di Pisa ogni
     context.bot.send_document(
         chat_id,
         document=open(get_menu_path(), "rb"),
-        filename=f"Menù mensa {get_week_start()}-{get_week_end()}",
+        filename=get_menu_name(),
     )
 
 
@@ -57,29 +57,29 @@ def update_menu(update: Update, context: CallbackContext) -> None:
 def send_menu(update: Update, context: CallbackContext) -> None:
     """Send the menu to every user that is subscribed to the bot. Additionally, count the number of active users."""
     chat_ids = get_users()
+    menu_name = get_menu_name()
 
-    # Send the menu as a file to the first user
+    # Send the menu as a file to the first user that is still active
     while True:
         try:
-            file_id = context.bot.send_document(
-                chat_ids.pop(),
+            fid = context.bot.send_document(
+                int(chat_ids.pop()),
                 document=open(get_menu_path(), "rb"),
-                filename=f"Menù mensa {get_week_start()}-{get_week_end()}",
+                filename=menu_name,
             ).document.file_id
             break
         except Unauthorized:
             pass
 
     active_users = 1
-    log.debug(f"File id of menu: {file_id}")
 
     # Then use the file_id to optimize sending the menu to every other user
     for chat_id in chat_ids:
         try:
             context.bot.send_document(
-                chat_id,
-                document=file_id,
-                filename=f"Menù mensa {get_week_start()}-{get_week_end()}",
+                int(chat_id),
+                document=fid,
+                filename=menu_name,
             )
             active_users += 1
         except Unauthorized:
@@ -108,4 +108,4 @@ Attualmente, l'applicazione viene utilizzata da {get_number_of_users()} studenti
 
 
 def buy_me_a_coffee(update: Update, context: CallbackContext) -> None:
-    pass
+    update.message.reply_text("In arrivo in futuro... ☕️")
