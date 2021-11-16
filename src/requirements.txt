@@ -7,3 +7,4 @@ pydantic[dotenv]
 requests
 beautifulsoup4
 pypdf2
+hiredis

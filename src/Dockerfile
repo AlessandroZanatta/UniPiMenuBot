@@ -1,8 +1,11 @@
 FROM python:3-alpine
 
-# Copy requirements
 COPY requirements.txt /requirements.txt
-RUN pip3 install -r requirements.txt
+RUN apk add --no-cache --virtual .build-deps \
+    build-base \
+    python3-dev \
+    && pip install -r requirements.txt \
+    && apk del --no-cache .build-deps
 
 # Create working directory for bot
 RUN mkdir -p /usr/src/bot
