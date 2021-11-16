@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  redis-db:
+    image: redis:6.2.6-alpine
+    volumes:
+      - ./redis_data:/data
+  bot:
+    build: ./src
+    links:
+      - redis-db
+    depends_on:
+      - redis-db

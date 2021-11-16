@@ -1,0 +1,9 @@
+redis==4.0.0
+pydantic==1.7.3
+python_telegram_bot==13.7
+rich==10.13.0
+telegram==0.0.1
+pydantic[dotenv]
+requests
+beautifulsoup4
+pypdf2

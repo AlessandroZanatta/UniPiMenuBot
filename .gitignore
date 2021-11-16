@@ -1,0 +1,4 @@
+.idea
+.env
+redis_data
+__pycache__
