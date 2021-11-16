@@ -13,7 +13,7 @@ You can start interacting with the bot by clicking [this link](https://t.me/UniP
 Basically, I'm lazy. Browsing the DSU website to get the weekly menu every single time I wanted to check it was way too boring.
 So I created this bot, in the hope that others can find it useful!
 
-Have a good meal!
+Buon appetito!
 
 ## Contribution
 Contributions are welcome!
