@@ -21,7 +21,9 @@ from handlers.handlers import *
 
 def main():
     log.info("Starting bot...")
-    os.mkdir(settings.menus_dir)
+    if not os.path.exists(settings.menus_dir):
+        os.mkdir(settings.menus_dir)
+
     get_full_menu()
     set_number_of_users(0)
 
