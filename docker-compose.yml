@@ -5,9 +5,11 @@ services:
     image: redis:6.2.6-alpine
     volumes:
       - ./redis_data:/data
+    restart: unless-stopped
   bot:
     build: ./src
     links:
       - redis-db
     depends_on:
       - redis-db
+    restart: unless-stopped
