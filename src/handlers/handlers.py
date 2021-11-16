@@ -34,12 +34,13 @@ def start(update: Update, context: CallbackContext) -> None:
 
     update.message.reply_text(
         """Benvenutə nell'unofficial bot UniPi Menù!
-Qua puoi trovare i menu settimanali di tutte le mense universitarie di Pisa ogni lunedì alle 7.15.
+Qua puoi trovare i menu settimanali di tutte le mense universitarie di Pisa ogni lunedì alle 7.30.
 
 È in arrivo quello corrente, buon pasto! 🍕🍝🧆"""
     )
 
     add_user(chat_id)
+    increment_number_of_users()
     context.bot.send_document(
         chat_id,
         document=open(get_menu_path(), "rb"),
@@ -47,14 +48,14 @@ Qua puoi trovare i menu settimanali di tutte le mense universitarie di Pisa ogni
     )
 
 
-def update_menu(update: Update, context: CallbackContext) -> None:
+def update_menu(context: CallbackContext) -> None:
     """Update the menu pdf by retrieving it from the official DSU website."""
     log.info("Updating the menu...")
     get_full_menu()
     log.info("Menu correctly updated!")
 
 
-def send_menu(update: Update, context: CallbackContext) -> None:
+def send_menu(context: CallbackContext) -> None:
     """Send the menu to every user that is subscribed to the bot. Additionally, count the number of active users."""
     chat_ids = get_users()
     menu_name = get_menu_name()

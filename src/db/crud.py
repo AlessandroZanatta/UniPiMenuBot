@@ -6,7 +6,7 @@ from logger.logger import log
 
 r = redis.Redis(
     connection_pool=redis.BlockingConnectionPool(
-        host="redis-db", port=6379, db=0, max_connections=10
+        host="unipibotmenu_redis-db", port=6379, db=0, max_connections=10
     )
 )
 
@@ -35,3 +35,7 @@ def set_number_of_users(active_users: int) -> None:
 
 def get_number_of_users() -> int:
     return int(r.get(settings.redis_active_users))
+
+
+def increment_number_of_users() -> None:
+    r.incr(settings.redis_active_users)

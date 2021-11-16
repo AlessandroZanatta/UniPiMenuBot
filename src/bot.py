@@ -38,18 +38,18 @@ def main():
     scheduler = updater.job_queue
     dispatcher = updater.dispatcher
 
+    # dispatcher.add_handler(CommandHandler("update_menu", update_menu))
     scheduler.run_custom(
         update_menu,
         job_kwargs={"trigger": "cron", "day_of_week": "mon", "hour": 7, "minute": 0},
     )
 
-    # dispatcher.add_handler(CommandHandler("update_menu", update_menu))
+    # dispatcher.add_handler(CommandHandler("send_menu", send_menu))
     scheduler.run_custom(
         send_menu,
-        job_kwargs={"trigger": "cron", "day_of_week": "mon", "hour": 7, "minute": 15},
+        job_kwargs={"trigger": "cron", "day_of_week": "mon", "hour": 7, "minute": 30},
     )
 
-    # dispatcher.add_handler(CommandHandler("send_menu", send_menu))
     dispatcher.add_handler(CommandHandler("about", about_the_bot))
     dispatcher.add_handler(CommandHandler("buy_me_a_coffee", buy_me_a_coffee))
     dispatcher.add_handler(CommandHandler("start", start))

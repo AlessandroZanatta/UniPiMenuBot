@@ -2,11 +2,14 @@ version: "3"
 
 services:
   redis-db:
+    container_name: unipibotmenu_redis-db
+    hostname: unipibotmenu_redis-db
     image: redis:6.2.6-alpine
     volumes:
       - ./redis_data:/data
     restart: unless-stopped
   bot:
+    container_name: unipibotmenu_bot
     build: ./src
     links:
       - redis-db
