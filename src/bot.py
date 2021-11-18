@@ -15,7 +15,7 @@ from apscheduler.triggers.cron import CronTrigger
 from settings.settings import settings
 from logger.logger import log
 from utils.utils import *
-from db.crud import set_number_of_users
+from db.crud import set_number_of_active_users
 from handlers.handlers import *
 
 
@@ -25,7 +25,7 @@ def main():
         os.mkdir(settings.menus_dir)
 
     get_full_menu()
-    set_number_of_users(get_number_of_users())
+    set_number_of_active_users(get_number_users())
 
     # Create the bot updater
     try:

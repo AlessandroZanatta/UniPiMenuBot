@@ -86,7 +86,7 @@ def send_menu(context: CallbackContext) -> None:
         except Unauthorized:
             pass
 
-    set_number_of_users(active_users)
+    set_number_of_active_users(active_users)
 
 
 def about_the_bot(update: Update, context: CallbackContext) -> None:
@@ -104,7 +104,7 @@ Il sorgente del bot è disponibile """
         + "[scrivi pure qua](https://github.com/AlessandroZanatta/UniPiMenuBot/issues/new)"
         + f"""!
 
-Attualmente, l'applicazione viene utilizzata da {get_number_of_users()} studenti universitari!"""
+Attualmente, l'applicazione viene utilizzata da {get_number_of_active_users()} studenti universitari!"""
     )
 
 
