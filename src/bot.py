@@ -25,7 +25,7 @@ def main():
         os.mkdir(settings.menus_dir)
 
     get_full_menu()
-    set_number_of_users(0)
+    set_number_of_users(get_number_of_users())
 
     # Create the bot updater
     try:
