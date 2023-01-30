@@ -80,7 +80,6 @@ def about_the_bot(update: Update, context: CallbackContext) -> None:
     update.message.reply_markdown(
         escape_markdown(
             f"""Il mio creatore è pigro, quindi mi ha creato per recuperare il menù tutti i giorni al suo posto! Spero di tornare utile anche a te!
-Se vuoi sostenere il corretto funzionamento del bot, puoi offire al mio creatore un caffè virtuale con /buy_me_a_coffee!
 
 Il sorgente del bot è disponibile """
         )
