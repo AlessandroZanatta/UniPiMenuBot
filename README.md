@@ -4,7 +4,7 @@
 <a href="https://github.com/AlessandroZanatta/UniPiMenuBot/commits/master"><img src="https://img.shields.io/github/last-commit/AlessandroZanatta/UniPiMenuBot?style=for-the-badge" alt="Last commit badge"></a>
 </p>
 
-#Telegram Menu Bot for Pisa
+# Telegram Menu Bot for Pisa
 This is an unofficial Telegram bot written in Python to download and send to subscribed users the weekly menu of the university restaurants here in Pisa.
 
 You can start interacting with the bot by clicking [this link](https://t.me/UniPiMenuBot)!
