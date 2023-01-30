@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfMerger
 from hashlib import md5
 from typing import List
 import requests
@@ -43,7 +43,7 @@ def get_menus_urls():
         if (
             any([restaurant in href for restaurant in settings.restaurants])
             and "takeaway" not in href
-            and current_menu in href
+            # and current_menu in href
         ):
             urls.append(base_url + href)
 
@@ -54,7 +54,7 @@ def get_menus_urls():
 def download_and_merge_pdfs(urls: List[str]) -> None:
     """Downloads the pdfs from the given list of URLs, merges them into a single one, and saves the result."""
     with tempfile.TemporaryDirectory() as dirname:
-        merger = PdfFileMerger()
+        merger = PdfMerger()
         for url in urls:
 
             # Download PDF

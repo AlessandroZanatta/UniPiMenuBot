@@ -1,19 +1,6 @@
-from telegram import (
-    Update,
-    ForceReply,
-    ReplyKeyboardMarkup,
-    InlineKeyboardMarkup,
-    LabeledPrice,
-)
+from telegram import Update
 from telegram.utils.helpers import escape_markdown
-from telegram.ext import (
-    Updater,
-    CommandHandler,
-    MessageHandler,
-    Filters,
-    CallbackContext,
-    ConversationHandler,
-)
+from telegram.ext import CallbackContext
 from telegram.error import Unauthorized
 
 from db.crud import *
@@ -40,7 +27,7 @@ Qua puoi trovare i menu settimanali di tutte le mense universitarie di Pisa ogni
     )
 
     add_user(chat_id)
-    increment_number_of_users()
+    increment_number_of_active_users()
     context.bot.send_document(
         chat_id,
         document=open(get_menu_path(), "rb"),
@@ -106,7 +93,3 @@ Il sorgente del bot è disponibile """
 
 Attualmente, l'applicazione viene utilizzata da {get_number_of_active_users()} studenti universitari!"""
     )
-
-
-def buy_me_a_coffee(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("In arrivo in futuro... ☕️")

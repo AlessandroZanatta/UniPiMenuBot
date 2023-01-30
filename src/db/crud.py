@@ -2,7 +2,6 @@ import redis
 from typing import List
 
 from settings.settings import settings
-from logger.logger import log
 
 r = redis.Redis(
     connection_pool=redis.BlockingConnectionPool(
@@ -12,7 +11,6 @@ r = redis.Redis(
 
 
 def add_user(chat_id: int) -> None:
-    log.debug(f"Received request to save a new user: {chat_id}")
     r.sadd(settings.redis_users, chat_id)
 
 
@@ -25,11 +23,10 @@ def is_already_subbed(chat_id: int) -> bool:
 
 
 def get_users() -> List[str]:
-    log.debug(f"Retrieving users' chat ids")
     return r.smembers(settings.redis_users)
 
 
-def get_number_users() -> int:
+def get_number_of_users() -> int:
     return r.scard(settings.redis_users)
 
 
@@ -41,5 +38,5 @@ def get_number_of_active_users() -> int:
     return int(r.get(settings.redis_active_users))
 
 
-def increment_number_of_users() -> None:
+def increment_number_of_active_users() -> None:
     r.incr(settings.redis_active_users)

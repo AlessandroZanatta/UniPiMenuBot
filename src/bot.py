@@ -9,8 +9,6 @@ from telegram.ext import (
     PreCheckoutQueryHandler,
 )
 from pydantic.error_wrappers import ValidationError
-from telegram.error import Unauthorized
-from apscheduler.triggers.cron import CronTrigger
 
 from settings.settings import settings
 from logger.logger import log
@@ -25,7 +23,7 @@ def main():
         os.mkdir(settings.menus_dir)
 
     get_full_menu()
-    set_number_of_active_users(get_number_users())
+    set_number_of_active_users(get_number_of_users())
 
     # Create the bot updater
     try:
@@ -51,7 +49,6 @@ def main():
     )
 
     dispatcher.add_handler(CommandHandler("about", about_the_bot))
-    dispatcher.add_handler(CommandHandler("buy_me_a_coffee", buy_me_a_coffee))
     dispatcher.add_handler(CommandHandler("start", start))
 
     # Start the bot
